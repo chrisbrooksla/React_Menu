@@ -3,7 +3,11 @@ import Menu from './Menu';
 import Categories from './Categories';
 import items from './data';
 
-
+// this is going to filter the "categories" from the "items" array.
+// we want to filter out only the unique categories, so we don't display duplicates..we just want one of each...
+// Set only gets unique values
+// we are setting a new array, where the first item is going to be "all", then we use the spread operator
+// to get the other unique categories...
 const allCategories = ['all', ...new Set (items.map((item) => item.category))];
 
 
@@ -13,7 +17,7 @@ function App() {
   // the menuItems are set to the array we are getting from .data.js, which we call "items".
   const [menuItems, setMenuItems] = useState(items);
 
-  // categories will be set to an empty array....
+  // our state value for "categories" is going to be set to the "allCategories" array
   const [categories, setCategories] = useState(allCategories);
 
 
@@ -39,6 +43,7 @@ function App() {
         <h2>our menu</h2>
         <div className="underline"></div>
       </div>
+      {/* categories is equal to our "categories" state value */}
       <Categories categories={categories} filterItems={filterItems}/>
 
       {/* let's pass in the menuItems state value to the Menu component... */}
